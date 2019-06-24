@@ -1,0 +1,11 @@
+{
+  "excludeFiles": [
+    "tasks/*",
+    "demo/*",
+    "test/*",
+    "index.html",
+    "karma.*",
+    "husky.*",
+    "commitlint.*"
+  ]
+}

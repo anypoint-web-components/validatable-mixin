@@ -1,0 +1,11 @@
+coverage/
+test/
+gen-tsd.json
+CONTRIBUTING.md
+demo/
+.travis.yml
+index.html
+polymer.json
+karma.*
+husky.*
+commitlint.*
