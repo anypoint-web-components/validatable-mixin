@@ -46,6 +46,7 @@
     "@polymer/iron-meta": "^3.0.1"
   },
   "devDependencies": {
+    "@advanced-rest-client/a11y-suite": "^1.0.1",
     "@advanced-rest-client/arc-demo-helper": "^1.0.3",
     "@advanced-rest-client/testing-karma-sl": "^1.0.2",
     "@anypoint-web-components/validator-mixin": "^1.0.0",

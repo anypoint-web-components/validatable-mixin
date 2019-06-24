@@ -1,4 +1,5 @@
 import { nextFrame, fixture, assert } from '@open-wc/testing';
+import { a11ySuite } from '@advanced-rest-client/a11y-suite/index.js';
 import './test-validatable.js';
 import '../demo/cats-only.js';
 import '../demo/minimum-length.js';
@@ -20,16 +21,6 @@ describe('ValidatableMixin', () => {
   }
 
   describe('Basics', () => {
-    it('setting `invalid` sets aria-invalid', async () => {
-      const element = await basicFixture();
-      element.invalid = true;
-      await nextFrame();
-      assert.equal(element.getAttribute('aria-invalid'), 'true', 'aria-invalid is set');
-      element.invalid = false;
-      await nextFrame();
-      assert.isFalse(element.hasAttribute('aria-invalid'), 'aria-invalid is unset');
-    });
-
     it('validate() is true if a validator isn\'t set', async () => {
       const element = await basicFixture();
       const valid = element.validate();
@@ -80,5 +71,20 @@ describe('ValidatableMixin', () => {
 
       assert.isTrue(states[0].valid, 'state.valid is true');
     });
+  });
+
+  describe('a11y', () => {
+    it('setting `invalid` sets aria-invalid', async () => {
+      const element = await basicFixture();
+      element.invalid = true;
+      await nextFrame();
+      assert.equal(element.getAttribute('aria-invalid'), 'true', 'aria-invalid is set');
+      element.invalid = false;
+      await nextFrame();
+      assert.isFalse(element.hasAttribute('aria-invalid'), 'aria-invalid is unset');
+    });
+
+    a11ySuite('Normal state', `<test-validatable></test-validatable>`);
+    a11ySuite('Invalid state', `<test-validatable invalid></test-validatable>`);
   });
 });
