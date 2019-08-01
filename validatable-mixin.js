@@ -88,15 +88,15 @@ export const ValidatableMixin = (base) => class extends base {
    * underlying ValidatableMixinMeta has changed. */
   get _validator() {
     if (!ValidatableMixinMeta) {
-      return;
+      return null;
     }
     const validator = this.validator;
     if (!validator) {
-      return;
+      return null;
     }
     const validatorsNames = validator.split(' ');
     if (validatorsNames.length === 0) {
-      return;
+      return null;
     }
     const result = [];
     validatorsNames.forEach((name) => {

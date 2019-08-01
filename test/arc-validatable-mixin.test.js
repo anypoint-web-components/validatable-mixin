@@ -1,5 +1,4 @@
 import { nextFrame, fixture, assert } from '@open-wc/testing';
-import { a11ySuite } from '@advanced-rest-client/a11y-suite/index.js';
 import './test-validatable.js';
 import '../demo/cats-only.js';
 import '../demo/minimum-length.js';
@@ -18,6 +17,10 @@ import '../demo/minimum-length.js';
 describe('ValidatableMixin', () => {
   async function basicFixture() {
     return (await fixture(`<test-validatable></test-validatable>`));
+  }
+
+  async function invalidFixture() {
+    return (await fixture(`<test-validatable invalid></test-validatable>`));
   }
 
   describe('Basics', () => {
@@ -84,7 +87,14 @@ describe('ValidatableMixin', () => {
       assert.isFalse(element.hasAttribute('aria-invalid'), 'aria-invalid is unset');
     });
 
-    a11ySuite('Normal state', `<test-validatable></test-validatable>`);
-    a11ySuite('Invalid state', `<test-validatable invalid></test-validatable>`);
+    it('is accessible in normal state', async () => {
+      const element = await basicFixture();
+      await assert.isAccessible(element);
+    });
+
+    it('is accessible in invalid state', async () => {
+      const element = await invalidFixture();
+      await assert.isAccessible(element);
+    });
   });
 });
