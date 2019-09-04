@@ -127,6 +127,30 @@ export const ValidatableMixin = (base) => class extends base {
       this._notifyChanged('validation-states', value);
     }
   }
+
+  /**
+   * @return {Function} Previously registered handler for `chips-changed` event
+   */
+  get oninvalid() {
+    return this._oninvalid;
+  }
+  /**
+   * Registers a callback function for `chips-changed` event
+   * @param {Function} value A callback to register. Pass `null` or `undefined`
+   * to clear the listener.
+   */
+  set oninvalid(value) {
+    if (this._oninvalid) {
+      this.removeEventListener('invalid-changed', this._oninvalid);
+    }
+    if (typeof value !== 'function') {
+      this._oninvalid = null;
+      return;
+    }
+    this._oninvalid = value;
+    this.addEventListener('invalid-changed', value);
+  }
+
   /**
    * @constructor
    */

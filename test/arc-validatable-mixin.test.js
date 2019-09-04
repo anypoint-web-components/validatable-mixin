@@ -76,6 +76,48 @@ describe('ValidatableMixin', () => {
     });
   });
 
+  describe('oninvalid', () => {
+    let element;
+    beforeEach(async () => {
+      element = await basicFixture();
+    });
+
+    it('Getter returns previously registered handler', () => {
+      assert.isUndefined(element.oninvalid);
+      const f = () => {};
+      element.oninvalid = f;
+      assert.isTrue(element.oninvalid === f);
+    });
+
+    it('Calls registered function', () => {
+      let called = false;
+      const f = () => {
+        called = true;
+      };
+      element.oninvalid = f;
+      element.invalid = true;
+      element.oninvalid = null;
+      assert.isTrue(called);
+    });
+
+    it('Unregisteres old function', () => {
+      let called1 = false;
+      let called2 = false;
+      const f1 = () => {
+        called1 = true;
+      };
+      const f2 = () => {
+        called2 = true;
+      };
+      element.oninvalid = f1;
+      element.oninvalid = f2;
+      element.invalid = true;
+      element.oninvalid = null;
+      assert.isFalse(called1);
+      assert.isTrue(called2);
+    });
+  });
+
   describe('a11y', () => {
     it('setting `invalid` sets aria-invalid', async () => {
       const element = await basicFixture();
