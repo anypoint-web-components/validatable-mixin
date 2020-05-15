@@ -30,8 +30,7 @@
   },
   "dependencies": {
     "@anypoint-web-components/validator-mixin": "^1.1.1",
-    "@open-wc/dedupe-mixin": "^1.2.17",
-    "@polymer/iron-meta": "^3.0.1"
+    "@open-wc/dedupe-mixin": "^1.2.17"
   },
   "devDependencies": {
     "@advanced-rest-client/arc-demo-helper": "^2.1.4",
