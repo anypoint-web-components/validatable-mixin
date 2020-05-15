@@ -1,54 +1,38 @@
 [![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/validatable-mixin.svg)](https://www.npmjs.com/package/@anypoint-web-components/validatable-mixin)
 
-[![Build Status](https://travis-ci.org/anypoint-web-components/validatable-mixin.svg?branch=stage)](https://travis-ci.org/anypoint-web-components/validatable-mixin)
+[![Build Status](https://travis-ci.com/anypoint-web-components/validatable-mixin.svg)](https://travis-ci.com/anypoint-web-components/validatable-mixin)
 
 # ValidatableMixin
 
 A mixin to implement user input validation in a LitElement component.
 
-A port of `iron-validatable-mixin` that works with any JavaScript class.
-To be used with Polymer 3, LitElement and low level web components.
-
 This validatable supports multiple validators.
 
-Use `ValidatableMixin` to implement an element that validates user input.
-Use the related `ArcValidatorBehavior` to add custom validation logic
-to an iron-input or other wrappers around native inputs.
+Use `ValidatableMixin` to implement an element that validates user input. Use the related `ArcValidatorBehavior` to add custom validation logic to an anypoint-input or other wrappers around native inputs.
 
-By default, an `<iron-form>` element validates its fields when the user presses the submit button.
-To validate a form imperatively, call the form's `validate()` method, which in turn will call `validate()` on all its children. By using `ValidatableMixin`, your custom element will get a public `validate()`, which will return the validity of the element, and a corresponding `invalid` attribute, which can be used for styling.
+To implement the custom validation logic of your element, you must override the protected `_getValidity()` method of this mixin, rather than `validate()`.
 
-To implement the custom validation logic of your element, you must override the protected `_getValidity()` method of this behaviour, rather than `validate()`.
-
-### Accessibility
+## Accessibility
 
 Changing the `invalid` property, either manually or by calling `validate()` will update the `aria-invalid` attribute.
 
-## Installation
+## Usage
+
+### Installation
 
 ```bash
-npm i @anypoint-web-components/validatable-mixin
+npm i @anypoint-web-components/validatable-mixin --save
 ```
-
-## Usage
 
 ### Using `_getValidity()` function
 
-```html
-<test-validatable></test-validatable>
-
-<script>
+```javascript
 import { LitElement, html } from 'lit-element';
-import { ValidatableMixin } from '@anypoint-web-components/validatable-mixin/validatable-mixin.js';
+import { ValidatableMixin } from '@anypoint-web-components/validatable-mixin';
 
 class InputValidatable extends ValidatableMixin(LitElement) {
   render() {
-    return html`<input/>`;
-  }
-
-  constructor() {
-    super();
-    this.addEventListener('input', this._onInput.bind(this));
+    return html`<input @input="${this._onInput}"/>`;
   }
 
   _onInput(e) {
@@ -60,18 +44,18 @@ class InputValidatable extends ValidatableMixin(LitElement) {
   }
 }
 window.customElements.define('input-validatable', InputValidatable);
-</script>
 ```
 
 ### Using custom validators
 
 ```html
 <cats-only message="Only cats are allowed!"></cats-only>
-<test-validatable validator="cats-only"></test-validatable>
+<input-validatable validator="cats-only"></input-validatable>
 
 <script>
 import { LitElement } from 'lit-element';
-import { ValidatorMixin } from '@anypoint-web-components/validator-mixin/validator-mixin.js';
+import { ValidatorMixin } from '@anypoint-web-components/validator-mixin';
+import { ValidatableMixin } from '@anypoint-web-components/validatable-mixin';
 
 class CatsOnly extends ValidatorMixin(LitElement) {
   validate(value) {
@@ -79,14 +63,10 @@ class CatsOnly extends ValidatorMixin(LitElement) {
   }
 }
 window.customElements.define('cats-only', CatsOnly);
+
 class InputValidatable extends ValidatableMixin(LitElement) {
   render() {
-    return html`<input/>`;
-  }
-
-  constructor() {
-    super();
-    this.addEventListener('input', this._onInput.bind(this));
+    return html`<input @input="${this._onInput}"/>`;
   }
 
   _onInput(e) {
@@ -97,17 +77,21 @@ window.customElements.define('input-validatable', InputValidatable);
 </script>
 ```
 
+## Development
 
-## Testing
-```bash
-npm test
+```sh
+git clone https://github.com/anypoint-web-components/validator-mixins
+cd validator-mixins
+npm install
 ```
 
-## Demo
-```bash
+### Running the demo locally
+
+```sh
 npm start
 ```
 
-### API components
-
-This components is a part of [API components ecosystem](https://elements.advancedrestclient.com/)
+### Running the tests
+```sh
+npm test
+```

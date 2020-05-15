@@ -12,17 +12,9 @@ License for the specific language governing permissions and limitations under
 the License.
 */
 import { LitElement, html } from 'lit-element';
-import { ValidatableMixin } from '../validatable-mixin.js';
+import { ValidatableMixin } from '../index.js';
 
 class ValidatableInput extends ValidatableMixin(LitElement) {
-  static properties() {
-    return {
-      invalid: {
-        type: Boolean
-      }
-    };
-  }
-
   render() {
     return html`<slot></slot>`;
   }

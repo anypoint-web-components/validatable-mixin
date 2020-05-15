@@ -3,28 +3,28 @@ import './test-validatable.js';
 import '../demo/cats-only.js';
 import '../demo/minimum-length.js';
 
-{
-  [
-    ['cats-only', 'Error cat'],
-    ['minimum-length', 'Error length']
-  ].forEach((item) => {
-    const validator = document.createElement(item[0]);
-    validator.message = item[1];
-    document.body.appendChild(validator);
-  });
-}
+/* eslint-disable prefer-destructuring */
 
+[
+  ['cats-only', 'Error cat'],
+  ['minimum-length', 'Error length'],
+].forEach(item => {
+  const validator = document.createElement(item[0]);
+  // @ts-ignore
+  validator.message = item[1];
+  document.body.appendChild(validator);
+});
 describe('ValidatableMixin', () => {
   async function basicFixture() {
-    return (await fixture(`<test-validatable></test-validatable>`));
+    return fixture(`<test-validatable></test-validatable>`);
   }
 
   async function invalidFixture() {
-    return (await fixture(`<test-validatable invalid></test-validatable>`));
+    return fixture(`<test-validatable invalid></test-validatable>`);
   }
 
   describe('Basics', () => {
-    it('validate() is true if a validator isn\'t set', async () => {
+    it("validate() is true if a validator isn't set", async () => {
       const element = await basicFixture();
       const valid = element.validate();
       assert.isTrue(valid);
@@ -123,10 +123,17 @@ describe('ValidatableMixin', () => {
       const element = await basicFixture();
       element.invalid = true;
       await nextFrame();
-      assert.equal(element.getAttribute('aria-invalid'), 'true', 'aria-invalid is set');
+      assert.equal(
+        element.getAttribute('aria-invalid'),
+        'true',
+        'aria-invalid is set'
+      );
       element.invalid = false;
       await nextFrame();
-      assert.isFalse(element.hasAttribute('aria-invalid'), 'aria-invalid is unset');
+      assert.isFalse(
+        element.hasAttribute('aria-invalid'),
+        'aria-invalid is unset'
+      );
     });
 
     it('is accessible in normal state', async () => {

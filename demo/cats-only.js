@@ -1,16 +1,19 @@
 import { LitElement } from 'lit-element';
-import { ValidatorMixin } from '@anypoint-web-components/validator-mixin/validator-mixin.js';
+import { ValidatorMixin } from '@anypoint-web-components/validator-mixin';
 
 class CatsOnly extends ValidatorMixin(LitElement) {
   /* istanbul ignore next */
   validateObject(obj) {
     /* istanbul ignore next */
-    return !Object.keys(obj).some((key) => obj[key].match(/^(c|ca|cat|cats)?$/) === null);
+    return !Object.keys(obj).some(
+      key => obj[key].match(/^(c|ca|cat|cats)?$/) === null
+    );
   }
+
   /* istanbul ignore next */
   validateArray(value) {
     /* istanbul ignore next */
-    return !value.some((value) => value.match(/^(c|ca|cat|cats)?$/) === null);
+    return !value.some(v => v.match(/^(c|ca|cat|cats)?$/) === null);
   }
 
   validate(values) {

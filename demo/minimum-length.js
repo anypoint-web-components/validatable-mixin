@@ -1,6 +1,5 @@
 import { ValidatorMixin } from '@anypoint-web-components/validator-mixin/validator-mixin.js';
 
-
 class MinimumLength extends ValidatorMixin(HTMLElement) {
   static get observedAttributes() {
     return ['message'];
@@ -13,21 +12,21 @@ class MinimumLength extends ValidatorMixin(HTMLElement) {
   }
 
   validateObject(obj) {
-    /* istanbul ignore next */
-    for (let key in obj) {
+    let result = true;
+    Object.keys(obj).forEach(key => {
       /* istanbul ignore next */
-      if (obj[key].length < 4) {
+      if (result && obj[key].length < 4) {
         /* istanbul ignore next */
-        return false;
+        result = false;
       }
-    }
-    /* istanbul ignore next */
-    return true;
+    });
+    return result;
   }
+
   /* istanbul ignore next */
   validateArray(value) {
     /* istanbul ignore next */
-    return !value.some((value) => value.length < 4);
+    return !value.some(v => v.length < 4);
   }
 
   validate(values) {
