@@ -152,7 +152,7 @@ const mxFunction = base => {
       }
       this._validationStates = value;
       this.dispatchEvent(
-        new CustomEvent(`validation-states-changed`, {
+        new CustomEvent(`validationstates-changed`, {
           composed: true,
           detail: {
             value,
