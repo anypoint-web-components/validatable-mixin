@@ -1,7 +1,7 @@
 {
   "name": "@anypoint-web-components/validatable-mixin",
   "description": "A mixin to implement user input validation in a LitElement component",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "Apache-2.0",
   "main": "index.js",
   "module": "index.js",
@@ -17,8 +17,7 @@
     "The Advanced REST client authors <arc@mulesoft.com>"
   ],
   "contributors": [
-    "Pawel Psztyc",
-    "The Advanced REST client authors <arc@mulesoft.com>"
+    "Your name can be here!"
   ],
   "repository": {
     "type": "git",
@@ -30,24 +29,24 @@
   },
   "dependencies": {
     "@anypoint-web-components/validator-mixin": "^1.1.1",
-    "@open-wc/dedupe-mixin": "^1.2.17"
+    "@open-wc/dedupe-mixin": "^1.3.0"
   },
   "devDependencies": {
     "@advanced-rest-client/arc-demo-helper": "^2.1.4",
-    "@advanced-rest-client/testing-karma-sl": "^1.3.1",
-    "@open-wc/eslint-config": "^2.0.0",
-    "@open-wc/testing": "^2.5.16",
-    "@open-wc/testing-karma": "^3.3.23",
+    "@advanced-rest-client/testing-karma-sl": "^1.4.2",
+    "@open-wc/eslint-config": "^3.0.0",
+    "@open-wc/testing": "^2.5.26",
+    "@open-wc/testing-karma": "^4.0.5",
     "deepmerge": "^4.2.2",
-    "es-dev-server": "^1.50.1",
-    "eslint": "^7.0.0",
+    "es-dev-server": "^1.57.4",
+    "eslint": "^7.9.0",
     "eslint-config-prettier": "^6.11.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.2",
-    "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1",
-    "prettier": "^2.0.4",
-    "typescript": "^3.9.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "lit-element": "^2.4.0",
+    "lit-html": "^1.3.0",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3",
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "scripts": {
@@ -84,7 +83,7 @@
   },
   "prettier": {
     "singleQuote": true,
-    "arrowParens": "avoid"
+    "arrowParens": "always"
   },
   "husky": {
     "hooks": {
@@ -93,9 +92,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
+      "eslint --fix"
     ]
   }
 }

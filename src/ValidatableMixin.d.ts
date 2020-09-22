@@ -5,7 +5,7 @@ interface ValidatableMixinConstructor {
   new(...args: any[]): ValidatableMixin;
 }
 
-declare interface ValidationResult {
+export declare interface ValidationResult {
   /**
    * Name of the validator
    */
@@ -35,7 +35,7 @@ declare interface ValidationResult {
  * of the element, and a corresponding `invalid` attribute, which can be used for styling.
  *
  * To implement the custom validation logic of your element, you must override
- * the protected `_getValidity()` method of this behaviour, rather than `validate()`.
+ * the protected `_getValidity()` method of this behavior, rather than `validate()`.
  * See [this](https://github.com/PolymerElements/iron-form/blob/master/demo/simple-element.html)
  * for an example.
  *
@@ -74,12 +74,6 @@ interface ValidatableMixin {
    * A list of validators to use to validate this element.
    */
   readonly _validator: ValidatorMixin[];
-
-  /**
-   * A callback to register. Pass `null` or `undefined`
-   * to clear the listener.
-   */
-  oninvalid: EventListener;
 
   /**
    * Updates the `aria-invalid` attribute when the invalid state change.

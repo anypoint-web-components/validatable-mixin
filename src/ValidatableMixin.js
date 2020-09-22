@@ -15,14 +15,7 @@ import { dedupeMixin } from '@open-wc/dedupe-mixin';
 import { ValidatorStore } from '@anypoint-web-components/validator-mixin';
 
 /** @typedef {import('@anypoint-web-components/validator-mixin').ValidatorMixin} ValidatorMixin */
-
-/**
- * @typedef {Object} ValidationResult
- * @property {string} validator Name of the validator
- * @property {string} message Validation message
- * @property {boolean} valid Whether the value is valid or no
- */
-
+/** @typedef {import('./ValidatableMixin').ValidationResult} ValidationResult */
 /**
  * Performs `value` validation on the `node` as an object implementing `ValidatorMixin`.
  *
@@ -35,8 +28,7 @@ function createValidationReport(value, node) {
   const { message } = node;
   const { nodeName } = asNode;
   // @ts-ignore
-  const validator =
-    (nodeName && nodeName.toLowerCase()) || asNode.constructor.is;
+  const validator = (nodeName && nodeName.toLowerCase()) || asNode.constructor.is;
   let valid;
   if (!node.validate(value)) {
     valid = false;
