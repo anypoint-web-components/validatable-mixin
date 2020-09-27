@@ -46,12 +46,13 @@ export declare interface ValidationResult {
  */
 interface ValidatableMixin {
   /**
-   * ame of the validator or validators to use.
+   * Name of the validator or validators to use.
    * If the element should be validated by more than one validator then separate names with
    * space. See docs for `ValidatorMixin` for description of how to define a
    * validator.
+   * @attribute
    */
-  validator: boolean;
+  validator: string;
 
   /**
    * After calling `validate()` this is be populated by latest result of the
@@ -67,6 +68,7 @@ interface ValidatableMixin {
 
   /**
    * True if the last call to `validate` is invalid.
+   * @attribute
    */
   invalid: boolean;
 

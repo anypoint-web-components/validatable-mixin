@@ -25,7 +25,7 @@
 </head>
 <body>
   <div class="vertical-section vertical-section-container centered">
-    <h1>validatable-mixn</h1>
+    <h1>validatable-mixin</h1>
     <!-- These are the validators to be used in inputs. -->
     <cats-only message="Only cats are allowed!"></cats-only>
     <minimum-length message="At least 4 characters are required"></minimum-length>
@@ -45,7 +45,7 @@
     <section id="demo2">
       <p>
         only type <code>cats</code> and 4 characters minimum:
-        <validatable-input id="input2" validator="cats-only minimum-length" validation-states="{{validatonResults}}">
+        <validatable-input id="input2" validator="cats-only minimum-length">
           <input>
         </validatable-input>
         <span class="valid" hidden>valid</span>
