@@ -1,7 +1,3 @@
-[![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/validatable-mixin.svg)](https://www.npmjs.com/package/@anypoint-web-components/validatable-mixin)
-
-[![Build Status](https://travis-ci.com/anypoint-web-components/validatable-mixin.svg)](https://travis-ci.com/anypoint-web-components/validatable-mixin)
-
 # ValidatableMixin
 
 A mixin to implement user input validation in a LitElement component.
@@ -11,6 +7,10 @@ This validatable supports multiple validators.
 Use `ValidatableMixin` to implement an element that validates user input. Use the related `ArcValidatorBehavior` to add custom validation logic to an anypoint-input or other wrappers around native inputs.
 
 To implement the custom validation logic of your element, you must override the protected `_getValidity()` method of this mixin, rather than `validate()`.
+
+[![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/validatable-mixin.svg)](https://www.npmjs.com/package/@anypoint-web-components/validatable-mixin)
+
+[![tests](https://github.com/anypoint-web-components/validatable-mixin/actions/workflows/tests.yml/badge.svg)](https://github.com/anypoint-web-components/validatable-mixin/actions/workflows/tests.yml)
 
 ## Accessibility
 
@@ -80,8 +80,8 @@ window.customElements.define('input-validatable', InputValidatable);
 ## Development
 
 ```sh
-git clone https://github.com/anypoint-web-components/validator-mixins
-cd validator-mixins
+git clone https://github.com/anypoint-web-components/validatable-mixin
+cd validatable-mixin
 npm install
 ```
 
@@ -92,6 +92,7 @@ npm start
 ```
 
 ### Running the tests
+
 ```sh
 npm test
 ```
