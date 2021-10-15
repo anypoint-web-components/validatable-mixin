@@ -1,4 +1,8 @@
-# ValidatableMixin
+# Deprecated
+
+This component has been moved to `anypoint-web-components/awc`.
+
+-----
 
 A mixin to implement user input validation in a LitElement component.
 
